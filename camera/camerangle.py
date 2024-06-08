@@ -36,7 +36,7 @@ def sharpen_image(image):
     sharpened = cv2.filter2D(image, -1, kernel)
     return sharpened
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 while True:
     ret, frame = cap.read()

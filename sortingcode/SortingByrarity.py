@@ -36,7 +36,7 @@ bins = {}
 misc_bin = []
 
 # Generate formatted strings
-formatted_strings = generate_formatted_strings(1000, "OUT")
+formatted_strings = generate_formatted_strings(1, "OUT")
 print("Generated card strings:", formatted_strings)
 
 # Process each card one at a time
