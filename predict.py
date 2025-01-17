@@ -54,6 +54,6 @@ def predict_image(image_path, model, device):
     return predicted_class
 
 # Example usage
-image_path = 'E:/testphotodata/image/saved_imageyoylo.png'
+image_path = 'E:/testphotodata/test/tester.png'
 predicted_class = predict_image(image_path, model, device)
 print(f'Predicted Class: {predicted_class}')
