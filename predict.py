@@ -1,3 +1,5 @@
+import os 
+import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -45,15 +47,20 @@ def predict_image(image_path, model, device):
     image = Image.open(image_path).convert('RGB')
     image = transform(image).unsqueeze(0)
     image = image.to(device)
-
+    start_time = time.time()
     with torch.no_grad():
         outputs = model(image)
         _, predicted = torch.max(outputs, 1)
         predicted_class = dataset.classes[predicted[0]]
-
-    return predicted_class
-
+    end_time = time.time()
+    
+    elapsed_time = round(end_time - start_time,4)
+    return predicted_class, elapsed_time
+    
 # Example usage
-image_path = 'E:/testphotodata/test/tester.png'
-predicted_class = predict_image(image_path, model, device)
-print(f'Predicted Class: {predicted_class}')
+test_folder = 'E:/testphotodata/test'
+for image_file in os.listdir(test_folder):
+    image_path = os.path.join(test_folder, image_file)
+    if image_path.endswith(".png") or image_path.endswith(".jpg"):
+        predicted_class, elapsed_time = predict_image(image_path, model, device)
+        print(f'Image: {image_file} -> Predicted Class: {predicted_class} (Time: {elapsed_time} sec)')

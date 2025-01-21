@@ -16,7 +16,7 @@ transform = transforms.Compose([
 ])
 
 # Load dataset
-dataset = ImageFolder(root='E:/testphotodata/outsider_card_list', transform=transform)
+dataset = ImageFolder(root='E:/card/Processed_Images', transform=transform)
 
 # Split dataset into train and validation
 train_size = int(0.8 * len(dataset))
